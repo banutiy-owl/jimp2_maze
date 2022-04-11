@@ -1,9 +1,8 @@
-'include pomocnicze.h'
-
-srand(time(NULL));
+#include "pomocnicze.h"
 
 double generator_double(double min, double max)
 {
+srand(time(NULL));
 double losowa=((double) rand()) / RAND_MAX;
 double zasieg=(max-min)*losowa;
 double liczba = min+zasieg;
@@ -32,9 +31,9 @@ if(numer[0]=='-')
 for(;numer[v]!=0;v++)
 {
 if(!isdigit(numer[v]))
-	if(numer[v]==',' and l==0)
+	if((/*numer[v] == ',' ||*/ numer[v] == '.') && l == 0)
 	{
-		l++
+		l++;
 		continue;
 	}
 	else
@@ -42,4 +41,5 @@ if(!isdigit(numer[v]))
 }
 return 1;
 }
-}
+
+
