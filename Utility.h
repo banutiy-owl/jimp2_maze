@@ -21,6 +21,8 @@ struct Graf
 {
     int l_wierz;
     struct Lista* t;        //tablica na graf
+    int wiersze;
+    int te_drugie;
 };
 
 struct wezel_o_min_wadze
