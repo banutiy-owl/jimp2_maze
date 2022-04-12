@@ -10,12 +10,13 @@ struct ListaPoziom* dodaj_wezel( int wierzcholek, double waga)      //ta funkcja
     wezel->next = NULL;
     return wezel;       //zwracanko wskaznika na wezel
 }
-struct Graf * Rozpoczecie_wszystkiego(int l_w) //ta funkcja calkowicie niespodziewanie *werble* alokuje graf i ogolnie wszystko w nim wpisuje
+struct Graf * Rozpoczecie_wszystkiego(int l_w, int kolumny, int wiersze) //ta funkcja calkowicie niespodziewanie *werble* alokuje graf i ogolnie wszystko w nim wpisuje
 {
     struct Graf * graf = malloc(sizeof(struct Graf));
     graf->l_wierz = l_w;
+    graf->wiersze = wiersze;
+    graf->te_drugie = kolumny;
 
-    
     graf->t = malloc(l_w * sizeof(struct Lista));       //tablica do listy o rozmiarze ilosci wierzcholkow
 
     int i;
@@ -31,8 +32,6 @@ void dodaj_krawedz(struct Graf* graf, int wierz_pocz, int wierz_konc, double wag
     wezel->next = graf->t[wierz_pocz].teges;
     graf->t[wierz_pocz].teges = wezel;
 
-    // Since graph is undirected,
-    // add an edge from dest to src also
     wezel = dodaj_wezel(wierz_pocz, waga);      //te linijki powinny zrobic to samo co tamte ale odwrotnie, bo mamy graf nieskierowany wiec wagi sie powtarzaja, a przynajmniej powinny z zamyslu
     wezel->next = graf->t[wierz_konc].teges;
     graf->t[wierz_konc].teges = wezel;
@@ -154,10 +153,10 @@ int czy_wierz_w_min_kolejce(struct kolejka_minimalna* kol_min, int w)       //sp
 
 void wypisz_tablice_odl(double odleglosci[], int n)     //ta funkcja calkowicie niespodziewanie *werble* wypisuje wszystkie odleglosci do kazdego wierzcholka
 {                                                       //wlasciwie to chyba nie jest potrzebna za bardzo bo mamy tylko do jednego wierzcholka odleglosci
-    printf("Vertex   Distance from Source\n");          //ale jest to przydatna funkcja do robienia testow dzialania, ktorych nie przeprowadzilismy
+    printf("Odlegoœci wierzcho³ków\n");          //ale jest to przydatna funkcja do robienia testow dzialania, ktorych nie przeprowadzilismy
     int i;
     for (i = 0; i < n; i++)
-        printf("%d \t\t %d\n", i, odleglosci[i]);
+        printf("%d \t\t %f\n", i, odleglosci[i]);
 }
 
 // The main function that calculates
@@ -172,7 +171,7 @@ void dijkstra(struct Graf* graf, int w_pocz)        //ta funkcja calkowicie nies
     struct kolejka_minimalna* kol_min = utworz_kolejke_min(l_w);
     int j;     
 
-    for (j = 0; j < l_w; j++         //rozpoczynam kopco kolejke 
+    for (j = 0; j < l_w; j++)         //rozpoczynam kopco kolejke 
     {
         odleglosci[j] = NIESKONCZONOSC;
         kol_min->t[j] = nowy_wezel_min(j,odleglosci[j]);
@@ -209,5 +208,8 @@ void dijkstra(struct Graf* graf, int w_pocz)        //ta funkcja calkowicie nies
     wypisz_tablice_odl(odleglosci, l_w);        //operacja wypisania taktycznego wszystkiego, co trzeba tam wypisac
 }
 
-//void otworzenie_pliku_i_sprawdzenie_danych(char * plikwej, graf_str ** graf);	
+void otworzenie_pliku_i_sprawdzenie_danych(char* plikwej, struct Graf* graf)
+{
+
+}
 
