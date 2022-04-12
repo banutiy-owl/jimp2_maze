@@ -17,6 +17,7 @@ struct queue {
 
 struct k_node* NewNode(int numer);
 struct queue* NewQueue() ;
+void add_to_queue(struct queue* q, int item);
 int remove_from_queue(struct queue* q);
 int bfs(struct Graph* g, int start);
 

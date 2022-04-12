@@ -40,19 +40,19 @@ int remove_from_queue(struct queue* q) {
 
 }
 
-int bfs(struct Graph* g, int start) {
+int bfs(struct Graf* g, int start) {
     struct queue* q = NewQueue();
     int u;
     int new;
-    int* flag = malloc(g->num_vert * sizeof(int));
-    int* prev =malloc(g->num_vert * sizeof(int));
-    for (int i=0; i<g->num_vert; i++) {
+    int* flag = malloc(g->l_wierz * sizeof(int));
+    int* prev =malloc(g->l_wierz * sizeof(int));
+    for (int i=0; i<g->l_wierz; i++) {
         flag[i]=0;
         prev[i]=0;
     }
     add_to_queue(q,start);
     int n=0;
-    int *neighbours=malloc(g->num_vert*g->num_vert);
+    int *neighbours=malloc(g->l_wierz*g->l_wierz);
     flag[start]=1;
     while (q->front!=NULL){
         u=remove_from_queue(q);
@@ -71,7 +71,7 @@ int bfs(struct Graph* g, int start) {
         }
         
     }
-    for (int i=0;i<g->num_vert;i++) {
+    for (int i=0;i<g->l_wierz;i++) {
         if (flag[i]!=1){
         return -1; // nie jest spojny
         }
