@@ -1,4 +1,5 @@
 #include "Pomocnicze.h"
+#include "Utility.h"
 int main(int argc, char **argv)
 {
 	int n;			//na ile grafow dzielimy
@@ -193,7 +194,8 @@ int main(int argc, char **argv)
         printf("b = % f\n",b);
         printf("filein = % s\n", plikwej);
         printf("fileout = % s", plikwyj);
-//	otworzenie_pliku_i_sprawdzenie_danych(plikwej);		
+       // struct Graf* graf
+otworzenie_pliku_i_sprawdzenie_danych(plikwej);		
 //	czytanie_z_pliku(wysokosc,szerokosc,plikwej,lis_sasiedztwa);
 //	podzial_grafu(lis_sasiedztwa);
 //   BFS()
