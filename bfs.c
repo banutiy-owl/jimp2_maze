@@ -18,22 +18,23 @@ struct queue* NewQueue() {
 }
 
 void add_to_queue(struct queue* q, int item) {
+    struct k_node* temp=NewNode(item);
     if (q->back==NULL) {
-        q->front = item;
+        q->front = temp;
     }
-    q->back=item;
-    q->back->next=item;
+    q->back=temp;
+    q->back->next=temp;
 }
 
 int remove_from_queue(struct queue* q) {
     if (q->front==NULL) {
-        print("Kolejka jest pusta");
+        printf("Kolejka jest pusta");
         return -1;
     }
     int last_item=q->back->value;
     q->front=q->front->next;
     if (q->front==NULL) {
-        print("Kolejka jest pusta");
+        printf("Kolejka jest pusta");
     }
 
     return last_item;
@@ -56,10 +57,10 @@ int bfs(struct Graf* g, int start) {
     flag[start]=1;
     while (q->front!=NULL){
         u=remove_from_queue(q);
-        while (g->array->head!=NULL) {
-            neighbours[n]=g->array->head->dest;
+        while (g->t->teges!=NULL) {
+            neighbours[n]=g->t->teges->wierz;
             n++;
-            g->array->head->next;
+            g->t->teges->next;
         }
         for ( int i = 0; i <n;i++) {
             new=neighbours[i];

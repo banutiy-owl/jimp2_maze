@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "Pomocnicze.h"
 #include "Utility.h"
 int main(int argc, char **argv)
@@ -21,9 +23,18 @@ int main(int argc, char **argv)
         {
 			strncpy(bufor,&argv[l1][1],10);
 		
-			if(strcmp(bufor,"help")==0)
-			{
-			printf("Tutaj będzie pomoc\n");
+			if(strcmp(bufor,"help")==0)	{
+			    printf("Program generuje niskierowany ważony graf o wyznaczonj liczbie wierszy i kolumn, po czym sparwdza czy on jest spójny i zuka najkrótszą drogę między wybranymi parami węzłów.\n");
+                printf(".//a.out [-filein file] [//-l.graf n] [//-fileout file] [//-startw x][//-koniecw y] [//-wagap a] [//-wagak b] [// -help]\n");
+                printf("Argumenty \n");
+                printf("\t-filein file  - informuje, że w pliku file jest zawarty graf\n");
+                printf("\t-l.graf n	- program podzieli graf na n grafó. Domyślnie n=1\n");
+                printf("\t-fileout file - plik wyjściowy o nazwie file\t");
+                printf("\t-startw x	- podaje numer wierzchołka początkowego dla szukania najkrótszej ścieżki. Domyślnie x - pierwszy wierzchołek grafu\n");
+                printf("\t-koniecw y	- podaje numer wierzchołka końcowego dla szukania najkrótszej ścieżki. Domyślnie y - ostatni wierzchołek grafu\n");
+                printf("\t-wagap a	- podaje minimumalne znaczenie do generowania wag. Domyślnie a=1\t");
+                printf("\t-wagak b	- podaje maksymalne znaczenie do generowania wag. Domyślnie b=100\n");
+                printf("\t-help		- wypisje dla użytkownika opis programu oraz agrumentów wywołania\n");
 			return 0;
 			}
 

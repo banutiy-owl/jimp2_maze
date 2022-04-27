@@ -1,4 +1,4 @@
-#include "pomocnicze.h"
+#include "Pomocnicze.h"
 
 double generator_double(double min, double max)
 {

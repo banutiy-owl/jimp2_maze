@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Utility.h"
 
 #ifndef BFS_H
 #define BFS_H
